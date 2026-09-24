@@ -1,12 +1,6 @@
-
 import FlashcardDeck from "./FlashcardDeck";
 
-function ResultView({
-  result,
-  onReset,
-  onNewFlashcards,
-  loading
-}) {
+function ResultView({ result, onReset }) {
   return (
     <section className="result-section">
       <div className="result-header">
@@ -22,7 +16,6 @@ function ResultView({
           type="button"
           className="secondary-button"
           onClick={onReset}
-          disabled={loading}
         >
           New Topic
         </button>
@@ -47,32 +40,6 @@ function ResultView({
       <FlashcardDeck
         flashcards={result.flashcards}
       />
-
-      <div className="new-flashcards-container">
-        <div className="new-flashcards-content">
-          <div>
-            <span className="new-flashcards-icon">✨</span>
-
-            <h3>Want more practice?</h3>
-
-            <p>
-              Generate a fresh set of flashcards
-              without repeating the previous questions.
-            </p>
-          </div>
-
-          <button
-            type="button"
-            className="new-flashcards-button"
-            onClick={onNewFlashcards}
-            disabled={loading}
-          >
-            {loading
-              ? "Generating..."
-              : "Generate New Flashcards ↗"}
-          </button>
-        </div>
-      </div>
     </section>
   );
 }

@@ -1,6 +1,10 @@
 
 import { validateResult } from "./validateResult";
 
+// Uses the Render backend URL in production.
+// Uses the Vite proxy when running locally.
+const API_BASE_URL = import.meta.env.VITE_API_URL || "";
+
 export async function generateStudyMaterial(
   prompt,
   previousFlashcards = [],
@@ -16,17 +20,20 @@ export async function generateStudyMaterial(
   let response;
 
   try {
-    response = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        prompt: prompt.trim(),
-        previousFlashcards,
-        onlyFlashcards
-      })
-    });
+    response = await fetch(
+      `${API_BASE_URL}/api/generate`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          prompt: prompt.trim(),
+          previousFlashcards,
+          onlyFlashcards
+        })
+      }
+    );
   } catch (error) {
     throw new Error(
       "Unable to connect to the server. Please check your connection."
@@ -46,12 +53,10 @@ export async function generateStudyMaterial(
   if (!response.ok) {
     throw new Error(
       data.message ||
-      "The server failed to generate study material."
+        "The server failed to generate study material."
     );
   }
 
-  // When only flashcards are requested,
-  // validate the flashcards separately.
   if (onlyFlashcards) {
     if (
       !Array.isArray(data.flashcards) ||
