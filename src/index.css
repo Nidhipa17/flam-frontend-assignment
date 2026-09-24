@@ -64,3 +64,261 @@ textarea:focus-visible {
 ::-webkit-scrollbar-thumb:hover {
   background: #6366f1;
 }
+
+/* =========================================
+   FLASHCARD LEARNING FEATURES
+========================================= */
+
+.flashcard-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.flashcard-section-header h3 {
+  margin-top: 0.4rem;
+}
+
+.flashcard-count {
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.flashcard-mode-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.flashcard-learning-area,
+.quiz-area,
+.retest-area {
+  width: 100%;
+}
+
+/* =========================================
+   FLASHCARD COLORS - FIXED
+========================================= */
+
+.flashcard-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 280px;
+  padding: 2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 1rem;
+  background: #ffffff;
+  color: #1f2937 !important;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.flashcard-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Card number */
+
+.flashcard-card .flashcard-number {
+  margin-bottom: 1rem;
+  color: #6366f1 !important;
+  font-size: 0.85rem;
+  font-weight: 700;
+  opacity: 1;
+}
+
+/* Question / Answer heading */
+
+.flashcard-card h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #111827 !important;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Question / Answer text */
+
+.flashcard-card p {
+  max-width: 650px;
+  margin: 0;
+  color: #374151 !important;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 1;
+}
+
+/* Hint text */
+
+.flashcard-card .flashcard-hint {
+  margin-top: 1.5rem;
+  color: #6b7280 !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 1;
+}
+
+/* =========================================
+   FLASHCARD NAVIGATION
+========================================= */
+
+.flashcard-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-card {
+  padding: 2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 1rem;
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.quiz-card h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #111827;
+  line-height: 1.5;
+}
+
+.quiz-card p {
+  color: #374151;
+}
+
+.quiz-progress {
+  margin-bottom: 1rem;
+  color: #c7d2fe;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 1;
+}
+
+.quiz-answer {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.quiz-answer strong {
+  color: #111827;
+}
+
+.quiz-answer p {
+  margin-top: 0.5rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.quiz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.quiz-result {
+  padding: 2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 1rem;
+  background: #ffffff;
+  color: #1f2937;
+  text-align: center;
+}
+
+.quiz-result h4 {
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.quiz-result p {
+  margin-bottom: 1rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.quiz-result button {
+  margin: 0.35rem;
+}
+
+/* =========================================
+   BUTTON DISABLED STATES
+========================================= */
+
+.flashcard-mode-buttons button:disabled,
+.flashcard-navigation button:disabled,
+.quiz-actions button:disabled,
+.quiz-card button:disabled,
+.quiz-result button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 600px) {
+  .flashcard-section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .flashcard-mode-buttons {
+    flex-direction: column;
+  }
+
+  .flashcard-mode-buttons button {
+    width: 100%;
+  }
+
+  .flashcard-card {
+    min-height: 240px;
+    padding: 1.25rem;
+  }
+
+  .flashcard-card p {
+    font-size: 1rem;
+  }
+
+  .quiz-card,
+  .quiz-result {
+    padding: 1.25rem;
+  }
+
+  .flashcard-navigation {
+    flex-direction: column;
+  }
+
+  .flashcard-navigation button {
+    width: 100%;
+  }
+
+  .quiz-actions {
+    flex-direction: column;
+  }
+
+  .quiz-actions button {
+    width: 100%;
+  }
+
+  .quiz-result button {
+    width: 100%;
+    margin: 0.35rem 0;
+  }
+}
